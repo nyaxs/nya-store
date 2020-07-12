@@ -1,0 +1,13 @@
+package com.nyaxs.nyastore;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class NyaStoreApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(NyaStoreApplication.class, args);
+    }
+
+}
