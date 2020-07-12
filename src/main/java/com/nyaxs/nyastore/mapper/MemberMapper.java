@@ -8,22 +8,24 @@ import com.nyaxs.nyastore.entity.Member;
  * @Package com.nyaxs.nyastore.mapper
  * @date 2020/7/12 20:55
  */
+@Mapper
 public interface MemberMapper {
 
-    public int getMemberById();
+    @Select("SELECT * FROM member WHERE id = #{id}")
+    int getMemberById(int id);
 
-    public int getMemberByName();
+    int getMemberByName();
 
-    public int getMemberByPhone();
+    int getMemberByPhone();
 
-    public int createMember(Member member);
+    int createMember(Member member);
 
-    public int deleteMemberById(int id);
+    int deleteMemberById(int id);
 
-    public int deleteMemberByName(String name);
+    int deleteMemberByName(String name);
 
-    public int updateMemberById(Member member);
+    int updateMemberById(Member member);
 
-    public int updateMemberByName(Member member);
+    int updateMemberByName(Member member);
 
 }
