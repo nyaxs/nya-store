@@ -1,5 +1,7 @@
 package com.nyaxs.nyastore.controller;
 
+import com.nyaxs.nyastore.mapper.MemberMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AuthenticationController {
 
-    @GetMapping("login")
-    public String login(){
-        
+    @Autowired
+    private MemberMapper memberMapper;
 
+    @GetMapping("login")
+    public String login(String name, String password){
+        System.out.println(memberMapper.getMemberByNameAndPassword("nyaxs", "123456"));
         return "userLogin";
     }
 
