@@ -1,6 +1,8 @@
 package com.nyaxs.nyastore.mapper;
 
 import com.nyaxs.nyastore.entity.Member;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @author nyaxs
