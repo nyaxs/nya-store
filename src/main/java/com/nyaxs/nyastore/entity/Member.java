@@ -2,6 +2,8 @@ package com.nyaxs.nyastore.entity;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+
 /**
  * @author nyaxs
  * @version V1.0
@@ -21,4 +23,9 @@ public class Member {
     private int levelId;
     private int phone;
     private String birthday;
+    public Member(){
+        nickName = "花生28";
+        createTime = LocalDate.now().toString();
+        personalizedSignature = "hello world";
+    }
 }

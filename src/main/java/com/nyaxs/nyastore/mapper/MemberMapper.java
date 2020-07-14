@@ -1,9 +1,10 @@
 package com.nyaxs.nyastore.mapper;
 
 import com.nyaxs.nyastore.entity.Member;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
+
+import java.util.Date;
 
 /**
  * @author nyaxs
@@ -17,22 +18,27 @@ import org.springframework.stereotype.Repository;
 public interface MemberMapper {
 
     @Select("SELECT * FROM member WHERE id = #{id}")
-    int getMemberById(int id);
+    Member getMemberById(int id);
 
-    int getMemberByName();
+    Member getMemberByName();
 
     @Select("SELECT * FROM member WHERE name = #{name} AND password = #{password} LIMIT 1")
-    int getMemberByNameAndPassword(String name, String password);
+    Member getMemberByNameAndPassword(String name, String password);
 
-    int getMemberByPhone();
+    @Select("SELECT * FROM member WHERE phone = #{phone} LIMIT 1")
+    Member getMemberByPhone(int phone);
 
-    int createMember(Member member);
+    @Insert("INSERT into member(name, password, nickname, phone) #{name}, #{password}, #{nickname}, #{phone}")
+    int insertMember(Member member);
 
+    @Delete("DELETE FROM member WHERE id = #{id}")
     int deleteMemberById(int id);
 
+    @Delete("DELETE FROM member WHERE name = #{name}")
     int deleteMemberByName(String name);
 
-    int updateMemberById(Member member);
+    @Update("UPDATE member SET birthday = #{date} WHERE id = #{id}")
+    int updateMemberBirthdayById(Date date, int id);
 
     int updateMemberByName(Member member);
 
