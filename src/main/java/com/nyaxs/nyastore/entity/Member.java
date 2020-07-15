@@ -25,14 +25,14 @@ public class Member {
     private String email;
     private String personalizedSignature;
     private LocalDate birthday;
-    private LocalDateTime createTime;
+    private LocalDate createTime;
     private int gender;
     private int status;
     private int levelId;
     private int phone;
     public Member(){
         nickName = "花生28";
-        createTime = LocalDateTime.now();
+        createTime = LocalDate.now();
         personalizedSignature = "hello world";
     }
 }
