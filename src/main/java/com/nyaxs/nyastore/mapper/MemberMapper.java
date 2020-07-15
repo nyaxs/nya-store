@@ -28,8 +28,8 @@ public interface MemberMapper {
     @Select("SELECT * FROM member WHERE phone = #{phone} LIMIT 1")
     Member getMemberByPhone(int phone);
 
-    @Insert("INSERT into member(name, password, nickname, phone) #{name}, #{password}, #{nickname}, #{phone}")
-    int insertMember(Member member);
+    @Insert("INSERT into member(name, password, nickname, phone) VALUES #{name}, #{password}, #{nickname}, #{phone}")
+    int insertMemberByRegister(Member member);
 
     @Delete("DELETE FROM member WHERE id = #{id}")
     int deleteMemberById(int id);

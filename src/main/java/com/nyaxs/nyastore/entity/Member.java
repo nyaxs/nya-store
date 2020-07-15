@@ -1,8 +1,12 @@
 package com.nyaxs.nyastore.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NonNull;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 /**
  * @author nyaxs
@@ -11,21 +15,24 @@ import java.time.LocalDate;
  * @date 2020/7/11 20:27
  */
 @Data
+@AllArgsConstructor
 public class Member {
+
     private int id;
     private String name;
     private String nickName;
-    private String createTime;
     private String password;
+    private String email;
+    private String personalizedSignature;
+    private LocalDate birthday;
+    private LocalDateTime createTime;
     private int gender;
     private int status;
-    private String personalizedSignature;
     private int levelId;
     private int phone;
-    private String birthday;
     public Member(){
         nickName = "花生28";
-        createTime = LocalDate.now().toString();
+        createTime = LocalDateTime.now();
         personalizedSignature = "hello world";
     }
 }
