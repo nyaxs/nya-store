@@ -4,6 +4,7 @@ import com.nyaxs.nyastore.entity.Member;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -17,19 +18,51 @@ import java.util.Date;
 
 public interface MemberMapper {
 
-    @Select("SELECT * FROM member WHERE id = #{id}")
-    Member getMemberById(int id);
+    /**
+     * 根据指定的列和值查询一条member记录
+     * 示例： getMemberByColumn("name","nyaxs")
+     * @param value: 查找条件值
+     * @param column: 数据库字段
+     * @return Member: 返回数据库表映射的Member实体类
+     */
+    @Select("SELECT * FROM member WHERE ${column} = #{value}")
+    Member getMemberByColumn(String column,Object value);
 
-    Member getMemberByName();
-
+    /**
+     * 根据用户名和密码查询用户记录
+     * 一般用于登录
+     * @param name 用户名
+     * @param password 密码
+     * @return Member 返回Member对象
+     */
     @Select("SELECT * FROM member WHERE name = #{name} AND password = #{password} LIMIT 1")
     Member getMemberByNameAndPassword(String name, String password);
+
+    /**
+     * 向member表增加一条用户记录
+     * 该记录只添加用户名name，密码password，创建时间create_time，常用于注册
+     * @param member 传入的Member对象参数
+     * @return int 返回影响行数
+     */
+    @Insert("INSERT INTO member(name, password, create_time) VALUES (#{name}, #{password}, #{createTime})")
+    int insertMemberByRegister(Member member);
+
+    /**
+     * 更新member表一条记录
+     * 更新用户的全部信息
+     * @param member 传入Member对象参数
+     * @return int 影响行数
+     */
+    @Update("UPDATE member SET name = #{name}, nickname = #{nickname}," +
+            " password = #{password}, phone = #{phone}, " +
+            "gender = #{gender},birthday = #{birthday}," +
+            "email = #{email}, personalized_signature = #{personalizedSignature} ")
+    int updateMemberById(Member member);
+
 
     @Select("SELECT * FROM member WHERE phone = #{phone} LIMIT 1")
     Member getMemberByPhone(int phone);
 
-    @Insert("INSERT INTO member(name, password, create_time) VALUES (#{name}, #{password}, #{createTime})")
-    int insertMemberByRegister(Member member);
 
     @Delete("DELETE FROM member WHERE id = #{id}")
     int deleteMemberById(int id);
@@ -38,7 +71,7 @@ public interface MemberMapper {
     int deleteMemberByName(String name);
 
     @Update("UPDATE member SET birthday = #{date} WHERE id = #{id}")
-    int updateMemberBirthdayById(Date date, int id);
+    int updateMemberBirthdayById(LocalDate date, int id);
 
     int updateMemberByName(Member member);
 
