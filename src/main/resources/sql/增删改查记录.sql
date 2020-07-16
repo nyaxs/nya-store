@@ -2,6 +2,7 @@ USE nya_store;
 show tables ;
 select * from goods_list_store;
 select * from goods_list_orders;
+select * from orders;
 select * from member;
 select * from goods;
 select * from store;
