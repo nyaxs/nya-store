@@ -64,3 +64,51 @@ CREATE TABLE store(
   AUTO_INCREMENT = 10
   DEFAULT CHARSET = utf8 COMMENT '商店表';
 
+# 创建用户等级表
+Create Table member_level(
+    id int not null auto_increment comment '用户等级id',
+    detail varchar(255) not null comment '用户等级描述',
+    primary key (id)
+)engine = InnoDB
+auto_increment = 10
+default charset = utf8 comment '用户等级表';
+
+drop table if exists orders;
+
+# 创建订单表
+CREATE TABLE orders(
+    id int not null auto_increment ,
+    goods_list_id int not null comment '商品列表id',
+    primary key (id)
+)engine = InnoDB
+auto_increment = 10
+default charset = utf8 comment '订单表';
+
+# 创建订单对应的商品列表表
+CREATE TABLE goods_list(
+                       id int not null auto_increment,
+                       goods_id int not null comment '商品id',
+                       orders_id int not null comment '订单id',
+                       size int not null comment '商品数量',
+                       primary key (id)
+)engine = InnoDB
+ auto_increment = 10
+ default charset = utf8 comment '商品列表表';
+
+alter table goods_list rename to goods_list_orders;
+
+
+# 创建商店对应的商品列表表
+CREATE TABLE goods_list_store(
+                           id int not null auto_increment,
+                           goods_id int not null comment '商品id',
+                           store_id int not null comment '订单id',
+                           size int not null comment '商品数量',
+                           primary key (id)
+)engine = InnoDB
+ auto_increment = 10
+ default charset = utf8 comment '商店对应的商品列表表';
+
+#商店表store添加字段商品列表id goods_list_id
+alter table store
+add column goods_list_id int not null default 0 comment '商店拥有的商品列表id';
