@@ -16,7 +16,7 @@ import java.util.Date;
 @Mapper
 @Repository
 
-public interface MemberMapper {
+public interface StoresMapper {
 
     /**
      * 根据指定的列和值查询一条member记录

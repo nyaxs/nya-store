@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class Goods {
     private int id;
     private int storeId;
+    private int amount;
     private String name;
     private String description;
     public Goods(){
