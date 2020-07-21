@@ -1,11 +1,10 @@
 package com.nyaxs.nyastore.mapper;
 
-import com.nyaxs.nyastore.entity.Member;
+import com.nyaxs.nyastore.entity.Members;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * @author nyaxs
@@ -26,7 +25,7 @@ public interface StoresMapper {
      * @return Member: 返回数据库表映射的Member实体类
      */
     @Select("SELECT * FROM member WHERE ${column} = #{value}")
-    Member getMemberByColumn(String column,Object value);
+    Members getMemberByColumn(String column, Object value);
 
     /**
      * 根据用户名和密码查询用户记录
@@ -36,7 +35,7 @@ public interface StoresMapper {
      * @return Member 返回Member对象
      */
     @Select("SELECT * FROM member WHERE name = #{name} AND password = #{password} LIMIT 1")
-    Member getMemberByNameAndPassword(String name, String password);
+    Members getMemberByNameAndPassword(String name, String password);
 
     /**
      * 向member表增加一条用户记录
@@ -45,7 +44,7 @@ public interface StoresMapper {
      * @return int 返回影响行数
      */
     @Insert("INSERT INTO member(name, password, create_time) VALUES (#{name}, #{password}, #{createTime})")
-    int insertMemberByRegister(Member member);
+    int insertMemberByRegister(Members member);
 
     /**
      * 更新member表一条记录
@@ -57,11 +56,11 @@ public interface StoresMapper {
             " password = #{password}, phone = #{phone}, " +
             "gender = #{gender},birthday = #{birthday}," +
             "email = #{email}, personalized_signature = #{personalizedSignature} ")
-    int updateMemberById(Member member);
+    int updateMemberById(Members member);
 
 
     @Select("SELECT * FROM member WHERE phone = #{phone} LIMIT 1")
-    Member getMemberByPhone(int phone);
+    Members getMemberByPhone(int phone);
 
 
     @Delete("DELETE FROM member WHERE id = #{id}")
@@ -73,6 +72,6 @@ public interface StoresMapper {
     @Update("UPDATE member SET birthday = #{date} WHERE id = #{id}")
     int updateMemberBirthdayById(LocalDate date, int id);
 
-    int updateMemberByName(Member member);
+    int updateMemberByName(Members member);
 
 }

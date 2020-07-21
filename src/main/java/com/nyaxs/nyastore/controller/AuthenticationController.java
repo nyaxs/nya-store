@@ -1,6 +1,6 @@
 package com.nyaxs.nyastore.controller;
 
-import com.nyaxs.nyastore.entity.Member;
+import com.nyaxs.nyastore.entity.Members;
 import com.nyaxs.nyastore.mapper.MemberMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * @author nyaxs
@@ -26,9 +25,9 @@ public class AuthenticationController {
     private MemberMapper memberMapper;
 
     @GetMapping("login")
-    public Member login(@RequestBody Member member){
+    public Members login(@RequestBody Members member){
         log.info("进入登录方法，传入的member name和password为：" + member.getName() + member.getPassword());
-        Member memberRead = new Member();
+        Members memberRead = new Members();
 
         memberRead = memberMapper.getMemberByNameAndPassword(member.getName(), member.getPassword());
         if(memberRead == null || memberRead.equals("")){
@@ -38,7 +37,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("register")
-    public int register(@RequestBody Member member){
+    public int register(@RequestBody Members member){
         log.info("进入注册方法，提交的member数据为：" + member.toString());
         member.setCreateTime(LocalDate.now());
         int result = memberMapper.insertMemberByRegister(member);

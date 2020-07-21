@@ -1,5 +1,6 @@
 package com.nyaxs.nyastore.entity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -10,5 +11,8 @@ import java.util.List;
  */
 public class Orders {
     private int id;
-    private List<Integer> goods_list;
+    private List<Commodities> goods_list;
+    private LocalDate createTime;
+    private int status;
+    private String address;
 }

@@ -2,7 +2,8 @@ package com.nyaxs.nyastore.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * @author nyaxs
@@ -12,13 +13,17 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @AllArgsConstructor
-public class Goods {
+public class Commodities {
     private int id;
     private int storeId;
+    private int categoryId;
     private int amount;
+    private int buyNumber;
+    private double price;
     private String name;
     private String description;
-    public Goods(){
+    private List<CommodityImages> imagesList;
+    public Commodities(){
         storeId = 0;
         name = "无名商品";
         description = "商品无描述";

@@ -2,18 +2,20 @@ package com.nyaxs.nyastore.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+
 
 /**
  * @author nyaxs
  * @version V1.0
- * @Package com.nyaxs.nyastore.entity
- * @date 2020/7/16 17:02
+ * @Package com.nyaxs.nyastore.Member
+ * @date 2020/7/11 20:27
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class MemberLevel {
+public class CommodityImages {
     private int id;
-    private String detail;
+    private int commodityId;
+    private String address;
 }

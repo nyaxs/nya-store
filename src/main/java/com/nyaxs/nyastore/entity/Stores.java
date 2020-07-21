@@ -11,12 +11,12 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class Store {
+public class Stores {
     private int id;
     private int memberId;
     private String name;
     private String description;
-    public Store(){
+    public Stores(){
         name = "默认商店名";
         description = "默认商店描述";
     }
