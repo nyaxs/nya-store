@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Mapper
 @Repository
 
-public interface GoodsMapper {
+public interface MembersMapper {
 
     /**
      * 根据指定的列和值查询一条member记录

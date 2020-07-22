@@ -2,6 +2,7 @@ package com.nyaxs.nyastore.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import sun.util.resources.LocaleData;
 
 import java.util.List;
 
@@ -21,7 +22,9 @@ public class Commodities {
     private int buyNumber;
     private double price;
     private String name;
+    private String categoryDetail;
     private String description;
+    private LocaleData createTime;
     private List<CommodityImages> imagesList;
     public Commodities(){
         storeId = 0;

@@ -1,7 +1,7 @@
 package com.nyaxs.nyastore.controller;
 
 import com.nyaxs.nyastore.entity.Members;
-import com.nyaxs.nyastore.mapper.MemberMapper;
+import com.nyaxs.nyastore.mapper.MembersMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +22,7 @@ import java.time.LocalDate;
 public class AuthenticationController {
 
     @Autowired
-    private MemberMapper memberMapper;
+    private MembersMapper memberMapper;
 
     @GetMapping("login")
     public Members login(@RequestBody Members member){
