@@ -1,11 +1,9 @@
 package com.nyaxs.nyastore.mapper;
 
-import com.nyaxs.nyastore.entity.Commodities;
-import com.nyaxs.nyastore.entity.Members;
+import com.nyaxs.nyastore.entity.version1.Commodities;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**

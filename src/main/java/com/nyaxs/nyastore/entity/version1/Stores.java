@@ -1,4 +1,4 @@
-package com.nyaxs.nyastore.entity;
+package com.nyaxs.nyastore.entity.version1;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

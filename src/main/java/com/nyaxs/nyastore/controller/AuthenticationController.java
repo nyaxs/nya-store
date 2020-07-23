@@ -1,6 +1,6 @@
 package com.nyaxs.nyastore.controller;
 
-import com.nyaxs.nyastore.entity.Members;
+import com.nyaxs.nyastore.entity.version1.Members;
 import com.nyaxs.nyastore.mapper.MembersMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

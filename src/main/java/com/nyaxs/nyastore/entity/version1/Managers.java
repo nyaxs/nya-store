@@ -1,11 +1,9 @@
-package com.nyaxs.nyastore.entity;
+package com.nyaxs.nyastore.entity.version1;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NonNull;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 
 /**
@@ -16,23 +14,19 @@ import java.time.LocalDateTime;
  */
 @Data
 @AllArgsConstructor
-public class Members {
+public class Managers {
 
     private int id;
-    private int gender;
-    private int status;
-    private int levelId;
-    private int phone;
     private String name;
     private String nickName;
     private String password;
     private String email;
-    private String personalizedSignature;
-    private LocalDate birthday;
     private LocalDate createTime;
-    public Members(){
+    private int status;
+    private int levelId;
+    private int phone;
+    public Managers(){
         nickName = "花生28";
         createTime = LocalDate.now();
-        personalizedSignature = "hello world";
     }
 }

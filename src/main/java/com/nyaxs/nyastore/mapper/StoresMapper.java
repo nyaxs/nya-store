@@ -1,6 +1,6 @@
 package com.nyaxs.nyastore.mapper;
 
-import com.nyaxs.nyastore.entity.Members;
+import com.nyaxs.nyastore.entity.version1.Members;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

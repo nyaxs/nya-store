@@ -1,4 +1,4 @@
-package com.nyaxs.nyastore.entity;
+package com.nyaxs.nyastore.entity.version1;
 
 import java.time.LocalDate;
 import java.util.List;
