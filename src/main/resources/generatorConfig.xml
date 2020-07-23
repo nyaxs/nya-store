@@ -1,35 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <!-- 引入配置文件 -->
-    <properties resource="generator.properties" />
-
-    <context id="context1" targetRuntime="MyBatis3">
-
-        <!-- 数据库连接信息 -->
-        <jdbcConnection driverClass="${jdbc.driverClassName}"
-                        connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}" />
-
-        <!-- 生成Model对象路径配置 -->
-        <javaModelGenerator targetPackage="my.mybatis.generator.auto.entity"
-                            targetProject="src\main\java">
-            <property name="enableSubPackages" value="true" />
-            <property name="trimStrings" value="true" />
+    <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包-->
+    <classPathEntry  location="D:maven-repositorymysqlmysql-connector-java8.0.11mysql-connector-java-8.0.11.jar"/>
+    <context id="DB2Tables"  targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/lan?serverTimezone=UTC" userId="root" password="111111">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="com.ideasfly.dao.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
         </javaModelGenerator>
-
-        <!-- 生成sqlXML文件路径配置 -->
-        <sqlMapGenerator targetPackage="my.mybatis.generator.auto.entity.xml"
-                         targetProject="src\main\java">
-            <property name="enableSubPackages" value="true" />
+        <!-- 生成映射文件的包名和位置-->
+        <sqlMapGenerator targetPackage="com.ideasfly.dao.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-
-        <!-- 生成DAO的类文件路径配置 -->
-        <javaClientGenerator targetPackage="my.mybatis.generator.auto.dao"
-                             targetProject="src\main\java" type="XMLMAPPER">
-            <property name="enableSubPackages" value="true" />
+        <!-- 生成DAO的包名和位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ideasfly.dao.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-
-        <!--要生成哪些表 -->
-        <table tableName="t_user" domainObjectName="User" />
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
+        <table tableName="dicom_file" domainObjectName="DicomFile" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>
