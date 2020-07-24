@@ -58,4 +58,23 @@
     birthday, personalized_signature, email
     from members
   </select>
+  
+  <select id="getMemberByNameAndPassword" resultMap="BaseResultMap">
+    select id, `name`, `password`, nickname, `rank`, phone, create_time, gender, `status`,
+           birthday, personalized_signature, email
+    from members
+    where `name` = #{name} and `password` = #{password}
+  </select>
+
+  <insert id="insertMemberByRegister" >
+    insert into members (name,password)
+    values(#{name},#{password})
+  </insert>
+
+  <select id="getMemberByColumn">
+    select *
+    from members
+    where ${key} = #{value}
+  </select>
+
 </mapper>

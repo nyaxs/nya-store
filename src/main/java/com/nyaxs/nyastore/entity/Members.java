@@ -1,6 +1,7 @@
 package com.nyaxs.nyastore.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Members implements Serializable {
@@ -16,7 +17,7 @@ public class Members implements Serializable {
 
     private Integer phone;
 
-    private Date createTime;
+    private LocalDate createTime;
 
     private Integer gender;
 
@@ -78,11 +79,11 @@ public class Members implements Serializable {
         this.phone = phone;
     }
 
-    public Date getCreateTime() {
+    public LocalDate getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDate createTime) {
         this.createTime = createTime;
     }
 

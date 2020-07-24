@@ -1,6 +1,6 @@
 package com.nyaxs.nyastore.controller;
 
-import com.nyaxs.nyastore.entity.version1.Members;
+import com.nyaxs.nyastore.entity.Members;
 import com.nyaxs.nyastore.mapper.MembersMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +39,7 @@ public class AuthenticationController {
     @PostMapping("register")
     public int register(@RequestBody Members member){
         log.info("进入注册方法，提交的member数据为：" + member.toString());
+        log.info("注册时仅 name 和 password 为必须，其余可为 null 或者默认指定");
         member.setCreateTime(LocalDate.now());
         int result = memberMapper.insertMemberByRegister(member);
         log.info("插入member表返回值：result = " + result);

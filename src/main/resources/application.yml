@@ -4,8 +4,8 @@ server:
 mybatis:
   #对应实体类包名
   type-aliases-package: com.nyaxs.nyastore.entity
-  mapper-locations: classpath:mybatis/mapper/*.xml
-  #config-location: classpath:mybatis/mybatis-config.xml
+  #注意！！！这里mapper-location映射mapper xml的位置需要加上项目名/模块名
+  mapper-locations: nya-store/classpath:mybatis/mapper/*.xml
 
 spring:
   datasource:
