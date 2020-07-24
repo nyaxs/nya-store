@@ -33,17 +33,6 @@ public class AuthenticationController {
         return memberRead;
     }
 
-    @GetMapping("member")
-    public Members login(@RequestParam int id){
-        log.info("进入getId方法，传入id为：" + id);
-        Members memberRead = new Members();
-
-        memberRead = memberMapper.selectById(id);
-        if(memberRead == null || memberRead.equals("")){
-            return null;
-        }
-        return memberRead;
-    }
 
     @PostMapping("register")
     public int register(@RequestBody Members member){

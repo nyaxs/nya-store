@@ -1,9 +1,7 @@
 package com.nyaxs.nyastore.mapper;
 
 import com.nyaxs.nyastore.entity.Members;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 /**
  * @ClassName MembersMapper
@@ -27,4 +25,13 @@ public interface MembersMapper {
 
     @Select("select * from members where ${key} = #{value}")
     Members getMemberByColumn(String key, String value);
+
+    @Update("update members set name = #{name}, password = #{password}, " +
+            "nickname = #{nickname}, birthday = #{birthday}, " +
+            "gender = #{gender}, personalized_signature = #{personalizedSignature}," +
+            "email = #{email}, phone = #{phone}")
+    int updateMember(Members member);
+
+    @Delete("delete from members where id = #{id}")
+    int deleteMemberById(int id);
 }
