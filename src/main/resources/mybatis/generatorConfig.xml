@@ -54,6 +54,7 @@
         <!--        <table tableName="user_info" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">-->
         <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true" />-->
         <!--        </table>-->
+<!--        注意！！！危险操作 tableName = % 会生成所有表对应的实体类，会覆盖-->
         <table tableName="%" >
             <generatedKey column="id" sqlStatement="Mysql" identity="true" />
         </table>
