@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nyaxs.nyastore.mapper.LevelsMapper">
+  <resultMap id="BaseResultMap" type="com.nyaxs.nyastore.entity.Levels">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="rank" jdbcType="INTEGER" property="rank" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from levels
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nyaxs.nyastore.entity.Levels">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into levels (`rank`, `role`)
+    values (#{rank,jdbcType=INTEGER}, #{role,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nyaxs.nyastore.entity.Levels">
+    update levels
+    set `rank` = #{rank,jdbcType=INTEGER},
+      `role` = #{role,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, `rank`, `role`
+    from levels
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, `rank`, `role`
+    from levels
+  </select>
+</mapper>
