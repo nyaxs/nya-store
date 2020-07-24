@@ -75,9 +75,12 @@
 
     <build>
         <resources>
-            <!-- mapper.xml文件在resources目录下-->
+            <!-- mapper.xml文件在java目录下 -->
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
             </resource>
         </resources>
 

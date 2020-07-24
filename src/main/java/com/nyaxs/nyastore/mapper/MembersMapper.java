@@ -1,27 +1,30 @@
 package com.nyaxs.nyastore.mapper;
 
 import com.nyaxs.nyastore.entity.Members;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Select;
 
-import java.util.List;
+/**
+ * @ClassName MembersMapper
+ * @Description TODO:
+ * @Author nyaxs
+ * @Date 2020-07-24 17:20
+ * @Version 1.0
+ **/
 
 @Mapper
-
 public interface MembersMapper {
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(Members record);
-
-    Members selectByPrimaryKey(Integer id);
-
-    List<Members> selectAll();
-
-    int updateByPrimaryKey(Members record);
-
+    @Select("select * from members where name = #{name} and password = #{password}")
     Members getMemberByNameAndPassword(String name, String password);
 
+    @Select("select * from members where id = #{id}")
+    Members selectById(int id);
+
+    @Insert("insert into members(name,password) values(#{name},#{password})")
     int insertMemberByRegister(Members member);
 
+    @Select("select * from members where ${key} = #{value}")
     Members getMemberByColumn(String key, String value);
 }
