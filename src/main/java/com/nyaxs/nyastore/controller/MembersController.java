@@ -4,10 +4,7 @@ import com.nyaxs.nyastore.entity.Members;
 import com.nyaxs.nyastore.mapper.MembersMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 public class MembersController {
@@ -34,8 +31,8 @@ public class MembersController {
 
     }
 
-    @GetMapping("member")
-    public Members getMember(String key, String value){
+    @GetMapping("member/{key}/{value}")
+    public Members getMember(@PathVariable String key, @PathVariable String value){
         return memberMapper.getMemberByColumn(key,value);
     }
 

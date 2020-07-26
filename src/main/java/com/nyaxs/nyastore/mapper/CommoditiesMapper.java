@@ -20,7 +20,7 @@ public interface CommoditiesMapper {
     Commodities getCommodityByName(String name);
 
     @Select("select * from commodities where id = #{id}")
-    Commodities selectById(int id);
+    Commodities getCommodityById(int id);
 
     @Insert("insert into commodities(name,price) values(#{name},#{password})")
     int insertMemberByRegister(Commodities commodity);
@@ -33,4 +33,6 @@ public interface CommoditiesMapper {
 
     @Delete("delete from commodities where id = #{id}")
     int deleteCommodityById(int id);
+
+
 }
