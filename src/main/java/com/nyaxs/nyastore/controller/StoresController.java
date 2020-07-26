@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @ClassName StoresController
  * @Description TODO:
@@ -30,4 +32,10 @@ public class StoresController {
     public Stores getStoreByName(@PathVariable String name){
         return storesMapper.getStoreByName(name);
     }
+
+    @GetMapping("storesList/name/{name}")
+    public List<Stores> getStoresListByName(@PathVariable String name){
+       return storesMapper.getStoresByName( name);
+    }
+
 }
