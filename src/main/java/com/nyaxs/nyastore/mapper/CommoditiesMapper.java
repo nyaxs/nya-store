@@ -3,6 +3,7 @@ package com.nyaxs.nyastore.mapper;
 import com.nyaxs.nyastore.entity.Commodities;
 import com.nyaxs.nyastore.entity.Members;
 import org.apache.ibatis.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @ClassName CommoditiesMapper

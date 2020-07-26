@@ -11,8 +11,13 @@ import org.apache.ibatis.annotations.Select;
  * @Date 2020-07-25 20:51
  * @Version 1.0
  **/
+
 @Mapper
 public interface StoresMapper {
-    @Select("select * from store where id = #{id}")
+
+    @Select("select * from stores where id = #{id}")
     Stores getStoreById(int id);
+
+    @Select("select * from stores where name = #{name}")
+    Stores getStoreByName(String name);
 }

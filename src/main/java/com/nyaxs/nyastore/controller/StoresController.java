@@ -4,6 +4,7 @@ import com.nyaxs.nyastore.entity.Stores;
 import com.nyaxs.nyastore.mapper.StoresMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -16,11 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StoresController {
 
+
     @Autowired
     private StoresMapper storesMapper;
 
-    GetMapping("store")
-    public Stores getStoreById(int id){
+   @GetMapping("store/id/{id}")
+    public Stores getStoreById(@PathVariable int id){
         return storesMapper.getStoreById(id);
+    }
+
+    @GetMapping("store/name/{name}")
+    public Stores getStoreByName(@PathVariable String name){
+        return storesMapper.getStoreByName(name);
     }
 }
