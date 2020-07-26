@@ -3,9 +3,9 @@ package com.nyaxs.nyastore.controller;
 import com.nyaxs.nyastore.entity.Commodities;
 import com.nyaxs.nyastore.mapper.CommoditiesMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @ClassName CommoditiesController
@@ -20,6 +20,11 @@ public class CommoditiesController {
     @Autowired
     private CommoditiesMapper commoditiesMapper;
 
+    @GetMapping("commoditiesList/{name}")
+    public List<Commodities> getCommoditiesListByName(@PathVariable String name){
+        return commoditiesMapper.getCommoditiesListByName(name);
+    }
+
     @GetMapping("commodity/{name}")
     public Commodities getCommodityByName(@PathVariable String name){
         return commoditiesMapper.getCommodityByName(name);
@@ -28,6 +33,16 @@ public class CommoditiesController {
     @GetMapping("commodity/{id}")
     public Commodities getCommodityById(@PathVariable int id){
         return commoditiesMapper.getCommodityById(id);
+    }
+
+    @PostMapping("commodity")
+    public int insertCommodity(Commodities commodity){
+        return commoditiesMapper.insertCommodity(commodity);
+    }
+
+    @DeleteMapping("commodity/{id}")
+    public int deleteCommodityById(@PathVariable int id){
+        return commoditiesMapper.deleteCommodityById(id);
     }
 
 }

@@ -5,6 +5,8 @@ import com.nyaxs.nyastore.entity.Members;
 import org.apache.ibatis.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * @ClassName CommoditiesMapper
  * @Description TODO:
@@ -22,8 +24,12 @@ public interface CommoditiesMapper {
     @Select("select * from commodities where id = #{id}")
     Commodities getCommodityById(int id);
 
-    @Insert("insert into commodities(name,price) values(#{name},#{password})")
-    int insertMemberByRegister(Commodities commodity);
+    @Select("select * from commodities where name like concat('%',#{name},'%')")
+    List<Commodities> getCommoditiesListByName(String name);
+
+    @Insert("insert into commodities(name,description,store_id,price,create_time,)" +
+            " values(#{name},#{description},#{store_id},#{price},#{createTime})")
+    int insertCommodity(Commodities commodity);
 
     @Select("select * from commodities where ${key} = #{value}")
     Commodities getCommodityByColumn(String key, String value);
