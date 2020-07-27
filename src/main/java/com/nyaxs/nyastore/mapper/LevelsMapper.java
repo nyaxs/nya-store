@@ -18,4 +18,6 @@ public interface LevelsMapper {
     @Select(" select role from levels where rank = '#{rank} ")
     String getLevelRoleByRank(int rank);
 
+
+
 }
