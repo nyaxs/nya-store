@@ -33,5 +33,5 @@ public interface InventoriesMapper {
     @Update("update inventories set amount = #{amount} where commodity_id = #{commodity_id} and store_id = #{storeId}")
     int updateInventories(int storeId, int commodityId, int amount);
 
-    
+
 }

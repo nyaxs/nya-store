@@ -1,10 +1,9 @@
 package com.nyaxs.nyastore.mapper;
 
 import com.nyaxs.nyastore.entity.Orders;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+
+import java.time.LocalDate;
 
 /**
  * @ClassName OrdersMapper
@@ -16,6 +15,10 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface OrdersMapper {
 
+
+    @Insert("insert into orders (create_time, address) values (#{createTime},#{address})")
+    int insertOrders(LocalDate createTime, String address);
+
     @Select("select * from orders where id = #{id}")
     Orders getOrderById(int id);
 
@@ -24,6 +27,9 @@ public interface OrdersMapper {
 
     @Update(" update orders set address = #{address} where id = #{id} ")
     int updateOrderAddressById(int id, String address);
+
+    @Update("update orders set status = #{status} where id = #{id}")
+    int updateOrderStatusById(int id, int status);
 
     @Delete(" delete orders where id = #{id} ")
     int deleteOrderById(int id);

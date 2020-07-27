@@ -12,6 +12,9 @@ public class Orders implements Serializable {
 
     private LocalDate createTime;
 
+    /**
+     * '订单状态：1-待付款，2-代发货，3-待收货，4-待评价'
+     */
     private Integer status;
 
     private String address;
