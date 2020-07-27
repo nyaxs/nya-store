@@ -2,6 +2,7 @@ package com.nyaxs.nyastore.mapper;
 
 import com.nyaxs.nyastore.entity.Orders;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 
@@ -12,6 +13,7 @@ import java.time.LocalDate;
  * @Date 2020-07-25 20:46
  * @Version 1.0
  **/
+@Repository
 @Mapper
 public interface OrdersMapper {
 
