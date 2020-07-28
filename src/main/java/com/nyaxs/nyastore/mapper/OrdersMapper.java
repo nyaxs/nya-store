@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @ClassName OrdersMapper
@@ -23,6 +24,9 @@ public interface OrdersMapper {
 
     @Select("select * from orders where id = #{id}")
     Orders getOrderById(int id);
+
+    @Select("select * from orders_members_list where member_id = #{memberId} ")
+    List<Orders> getOrdersListByMemberId(int memberId);
 
     @Select("insert into orders(create_time, status, address) values (#{createTime},#{status},#{address})")
     int insertOrders(Orders order);

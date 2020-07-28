@@ -267,3 +267,14 @@ create table shopping_carts_commodities
 ) engine = InnoDB
   auto_increment = 10
   default charset = utf8 comment '购物车商品列表';
+
+create table orders_members_list
+(
+    id        int not null auto_increment,
+    order_id  int not null comment '订单Id',
+    member_id int not null comment '会员id',
+    primary key (id)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 10
+  default charset = utf8 comment '会员的全部订单表';
+

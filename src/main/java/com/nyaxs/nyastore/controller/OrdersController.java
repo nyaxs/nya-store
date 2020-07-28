@@ -5,6 +5,8 @@ import com.nyaxs.nyastore.mapper.OrdersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @ClassName OrdersController
  * @Description TODO:
@@ -23,9 +25,31 @@ public class OrdersController {
         return ordersMapper.getOrderById(id);
     }
 
+    @GetMapping("ordersList/{memberId}")
+    List<Orders> getOrdersListByMemberId(@PathVariable int memberId){
+        return ordersMapper.getOrdersListByMemberId(memberId);
+    }
+
     @PostMapping("order")
     int addOrder(@RequestBody Orders orders){
         return ordersMapper.insertOrders(orders);
     }
+
+    @PostMapping("order/status")
+    int updateOrderStatus(@RequestBody int orderId, int status){
+        return ordersMapper.updateOrderStatusById(orderId,status);
+    }
+
+    @PostMapping("order/address")
+    int updateOrderAddress(@RequestBody int orderId, String address){
+        return ordersMapper.updateOrderAddressById(orderId,address);
+    }
+
+    @DeleteMapping("order/{id}")
+    int deleteOrderById(@PathVariable int id){
+        return ordersMapper.deleteOrderById(id);
+    }
+
+
 
 }

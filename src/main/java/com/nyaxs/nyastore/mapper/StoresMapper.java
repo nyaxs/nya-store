@@ -3,6 +3,7 @@ package com.nyaxs.nyastore.mapper;
 import com.nyaxs.nyastore.entity.Stores;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @Date 2020-07-25 20:51
  * @Version 1.0
  **/
-
+@Repository
 @Mapper
 public interface StoresMapper {
 
