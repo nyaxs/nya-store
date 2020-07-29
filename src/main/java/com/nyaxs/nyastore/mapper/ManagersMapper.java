@@ -3,6 +3,7 @@ package com.nyaxs.nyastore.mapper;
 import com.nyaxs.nyastore.entity.Managers;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 /**
  * @ClassName ManagersMapper
@@ -12,6 +13,7 @@ import org.apache.ibatis.annotations.Select;
  * @Version 1.0
  **/
 
+@Repository
 @Mapper
 public interface ManagersMapper {
 

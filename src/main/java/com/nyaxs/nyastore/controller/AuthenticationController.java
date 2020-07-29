@@ -18,16 +18,20 @@ import java.time.LocalDate;
 @RestController
 public class AuthenticationController {
 
+    private final MembersMapper memberMapper;
+
     @Autowired
-    private MembersMapper memberMapper;
+    public AuthenticationController(MembersMapper memberMapper) {
+        this.memberMapper = memberMapper;
+    }
 
     @GetMapping("login")
-    public Members login(@RequestBody Members member){
+    public Members login(@RequestBody Members member) {
         log.info("进入登录方法，传入的member name和password为：" + member.getName() + member.getPassword());
         Members memberRead = new Members();
 
         memberRead = memberMapper.getMemberByNameAndPassword(member.getName(), member.getPassword());
-        if(memberRead == null || memberRead.equals("")){
+        if (memberRead == null || memberRead.equals("")) {
             return null;
         }
         return memberRead;
@@ -35,20 +39,20 @@ public class AuthenticationController {
 
 
     @PostMapping("register")
-    public int register(@RequestBody Members member){
+    public int register(@RequestBody Members member) {
         log.info("进入注册方法，提交的member数据为：" + member.toString());
         log.info("注册时仅 name 和 password 为必须，其余可为 null 或者默认指定");
         member.setCreateTime(LocalDate.now());
         int result = memberMapper.insertMemberByRegister(member);
         log.info("插入member表返回值：result = " + result);
-        if (result > 0){
+        if (result > 0) {
             return result;
         }
         return -1;
     }
 
     @GetMapping("hello")
-    public String hello(){
+    public String hello() {
         return "hello world";
     }
 

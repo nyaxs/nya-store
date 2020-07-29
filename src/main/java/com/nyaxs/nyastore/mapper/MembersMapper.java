@@ -2,6 +2,7 @@ package com.nyaxs.nyastore.mapper;
 
 import com.nyaxs.nyastore.entity.Members;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 /**
  * @ClassName MembersMapper
@@ -11,6 +12,7 @@ import org.apache.ibatis.annotations.*;
  * @Version 1.0
  **/
 
+@Repository
 @Mapper
 public interface MembersMapper {
 

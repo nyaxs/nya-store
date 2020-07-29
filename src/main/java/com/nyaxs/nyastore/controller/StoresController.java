@@ -20,22 +20,26 @@ import java.util.List;
 public class StoresController {
 
 
-    @Autowired
-    private StoresMapper storesMapper;
+    private final StoresMapper storesMapper;
 
-   @GetMapping("store/id/{id}")
-    public Stores getStoreById(@PathVariable int id){
+    @Autowired
+    public StoresController(StoresMapper storesMapper) {
+        this.storesMapper = storesMapper;
+    }
+
+    @GetMapping("store/id/{id}")
+    public Stores getStoreById(@PathVariable int id) {
         return storesMapper.getStoreById(id);
     }
 
     @GetMapping("store/name/{name}")
-    public Stores getStoreByName(@PathVariable String name){
+    public Stores getStoreByName(@PathVariable String name) {
         return storesMapper.getStoreByName(name);
     }
 
     @GetMapping("storesList/name/{name}")
-    public List<Stores> getStoresListByName(@PathVariable String name){
-       return storesMapper.getStoresByName( name);
+    public List<Stores> getStoresListByName(@PathVariable String name) {
+        return storesMapper.getStoresByName(name);
     }
 
 }

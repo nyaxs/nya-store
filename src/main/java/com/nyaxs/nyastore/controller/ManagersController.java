@@ -17,13 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ManagersController {
 
+    private final ManagersMapper managersMapper;
+
     @Autowired
-    private ManagersMapper managersMapper;
+    public ManagersController(ManagersMapper managersMapper) {
+        this.managersMapper = managersMapper;
+    }
 
     @GetMapping("manager")
-    public Managers login(@RequestBody Managers manager){
+    public Managers login(@RequestBody Managers manager) {
 
-        return managersMapper.getManagerByNameAndPassword(manager.getName(),manager.getPassword());
+        return managersMapper.getManagerByNameAndPassword(manager.getName(), manager.getPassword());
     }
 
 }

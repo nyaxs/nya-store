@@ -17,39 +17,42 @@ import java.util.List;
 @RestController
 public class OrdersController {
 
+    private final OrdersMapper ordersMapper;
+
     @Autowired
-    private OrdersMapper ordersMapper;
+    public OrdersController(OrdersMapper ordersMapper) {
+        this.ordersMapper = ordersMapper;
+    }
 
     @GetMapping("order/{id}")
-    Orders getOrderById(@PathVariable int id){
+    Orders getOrderById(@PathVariable int id) {
         return ordersMapper.getOrderById(id);
     }
 
     @GetMapping("ordersList/{memberId}")
-    List<Orders> getOrdersListByMemberId(@PathVariable int memberId){
+    List<Orders> getOrdersListByMemberId(@PathVariable int memberId) {
         return ordersMapper.getOrdersListByMemberId(memberId);
     }
 
     @PostMapping("order")
-    int addOrder(@RequestBody Orders orders){
+    int addOrder(@RequestBody Orders orders) {
         return ordersMapper.insertOrders(orders);
     }
 
     @PostMapping("order/status")
-    int updateOrderStatus(@RequestBody int orderId, int status){
-        return ordersMapper.updateOrderStatusById(orderId,status);
+    int updateOrderStatus(@RequestBody int orderId, int status) {
+        return ordersMapper.updateOrderStatusById(orderId, status);
     }
 
     @PostMapping("order/address")
-    int updateOrderAddress(@RequestBody int orderId, String address){
-        return ordersMapper.updateOrderAddressById(orderId,address);
+    int updateOrderAddress(@RequestBody int orderId, String address) {
+        return ordersMapper.updateOrderAddressById(orderId, address);
     }
 
     @DeleteMapping("order/{id}")
-    int deleteOrderById(@PathVariable int id){
+    int deleteOrderById(@PathVariable int id) {
         return ordersMapper.deleteOrderById(id);
     }
-
 
 
 }

@@ -17,31 +17,35 @@ import java.util.List;
 @RestController
 public class CommoditiesController {
 
+    private final CommoditiesMapper commoditiesMapper;
+
     @Autowired
-    private CommoditiesMapper commoditiesMapper;
+    public CommoditiesController(CommoditiesMapper commoditiesMapper) {
+        this.commoditiesMapper = commoditiesMapper;
+    }
 
     @GetMapping("commoditiesList/{name}")
-    public List<Commodities> getCommoditiesListByName(@PathVariable String name){
+    public List<Commodities> getCommoditiesListByName(@PathVariable String name) {
         return commoditiesMapper.getCommoditiesListByName(name);
     }
 
     @GetMapping("commodity/{name}")
-    public Commodities getCommodityByName(@PathVariable String name){
+    public Commodities getCommodityByName(@PathVariable String name) {
         return commoditiesMapper.getCommodityByName(name);
     }
 
     @GetMapping("commodity/{id}")
-    public Commodities getCommodityById(@PathVariable int id){
+    public Commodities getCommodityById(@PathVariable int id) {
         return commoditiesMapper.getCommodityById(id);
     }
 
     @PostMapping("commodity")
-    public int insertCommodity(Commodities commodity){
+    public int insertCommodity(Commodities commodity) {
         return commoditiesMapper.insertCommodity(commodity);
     }
 
     @DeleteMapping("commodity/{id}")
-    public int deleteCommodityById(@PathVariable int id){
+    public int deleteCommodityById(@PathVariable int id) {
         return commoditiesMapper.deleteCommodityById(id);
     }
 

@@ -1,6 +1,5 @@
 package com.nyaxs.nyastore.controller;
 
-import com.nyaxs.nyastore.entity.Commodities;
 import com.nyaxs.nyastore.entity.ShoppingCarts;
 import com.nyaxs.nyastore.entity.ShoppingCartsCommodities;
 import com.nyaxs.nyastore.mapper.ShoppingCartsCommoditiesMapper;
@@ -32,31 +31,29 @@ public class ShoppingCartsController {
     }
 
     @GetMapping("shoppingCart/{memberId}")
-    public ShoppingCarts getCartByMemberId(@PathVariable int memberId){
+    public ShoppingCarts getCartByMemberId(@PathVariable int memberId) {
         return cartMapper.getShoppingCarts(memberId);
     }
 
     @GetMapping("shoppingCart/commoditiesList/{cartId}")
-    public List<ShoppingCartsCommodities> getCommoditiesListInCart(@PathVariable int cartId){
+    public List<ShoppingCartsCommodities> getCommoditiesListInCart(@PathVariable int cartId) {
         return cartsCommoditiesMapper.getShoppingCartsCommodities(cartId);
     }
 
     @PostMapping("cart/commodities")
-    public int addCommoditiesIntoCarts(@RequestBody ShoppingCartsCommodities cartsCommodities){
+    public int addCommoditiesIntoCarts(@RequestBody ShoppingCartsCommodities cartsCommodities) {
         return cartsCommoditiesMapper.addCommodityToShoppingCartsById(cartsCommodities);
     }
 
     @PutMapping("cart/commodity/buyNumber")
-    public int updateBuyNumber(@RequestBody ShoppingCartsCommodities cartsCommodities){
+    public int updateBuyNumber(@RequestBody ShoppingCartsCommodities cartsCommodities) {
         return cartsCommoditiesMapper.updateBuyNumber(cartsCommodities);
     }
 
     @DeleteMapping("cart/commodity")
-    public int deleteCommodity(@RequestBody ShoppingCartsCommodities cartsCommodity){
+    public int deleteCommodity(@RequestBody ShoppingCartsCommodities cartsCommodity) {
         return cartsCommoditiesMapper.deleteCommodityFromCarts(cartsCommodity);
     }
 
-
-        
 
 }

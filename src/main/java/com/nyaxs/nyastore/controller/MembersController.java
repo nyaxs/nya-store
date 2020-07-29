@@ -7,33 +7,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
+@RestController
 public class MembersController {
 
+    private final MembersMapper memberMapper;
+
     @Autowired
-    private MembersMapper memberMapper;
+    public MembersController(MembersMapper memberMapper) {
+        this.memberMapper = memberMapper;
+    }
 
 
     @GetMapping("member")
-    public Members login(@RequestParam int id){
+    public Members login(@RequestParam int id) {
         log.info("进入getId方法，传入id为：" + id);
         Members memberRead = new Members();
 
         memberRead = memberMapper.selectById(id);
-        if(memberRead == null || memberRead.equals("")){
+        if (memberRead == null || memberRead.equals("")) {
             return null;
         }
         return memberRead;
     }
 
     @PostMapping("member")
-    public int updateMember(@RequestBody Members member){
+    public int updateMember(@RequestBody Members member) {
         return memberMapper.updateMember(member);
 
     }
 
     @GetMapping("member/{key}/{value}")
-    public Members getMember(@PathVariable String key, @PathVariable String value){
-        return memberMapper.getMemberByColumn(key,value);
+    public Members getMember(@PathVariable String key, @PathVariable String value) {
+        return memberMapper.getMemberByColumn(key, value);
     }
 
 }
