@@ -278,3 +278,8 @@ create table orders_members_list
   AUTO_INCREMENT = 10
   default charset = utf8 comment '会员的全部订单表';
 
+alter table managers
+change `rank` rank_info int(4) not null default 51 comment '管理员权限等级，默认51，普通店员';
+
+alter table members
+    change `rank` rank_info int(4) default 1 comment '会员等级，默认为1普通会员';

@@ -24,10 +24,12 @@ public interface ShoppingCartsCommoditiesMapper {
             "values(#{shoppingCartId},#{commodityId},#{buyNumber},#{storeId})")
     int addCommodityToShoppingCartsById(ShoppingCartsCommodities shoppingCartsCommodities);
 
-    @Update("update shopping_carts_commodities set buy_number = #{buyNumber} where id = #{cartId}")
-    int updateBuyNumber(int cartId, int buyNumber);
+    @Update("update shopping_carts_commodities set buy_number = #{buyNumber} " +
+            "where shopping_cart_id = #{shoppingCartId}" +
+            "and commodity_id = #{commodityId}")
+    int updateBuyNumber(ShoppingCartsCommodities cartsCommodities);
 
-    @Delete("delete from shopping_carts_commodities where shopping_cart_id = #{cartId} and commodity_id = #{commodityId}")
-    int deleteCommodityFromCarts(int cartId, int commodityId);
+    @Delete("delete from shopping_carts_commodities where shopping_cart_id = #{shoppingCartId} and commodity_id = #{commodityId}")
+    int deleteCommodityFromCarts(ShoppingCartsCommodities cartsCommodity);
 
 }

@@ -6,10 +6,7 @@ import com.nyaxs.nyastore.entity.ShoppingCartsCommodities;
 import com.nyaxs.nyastore.mapper.ShoppingCartsCommoditiesMapper;
 import com.nyaxs.nyastore.mapper.ShoppingCartsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,14 +21,24 @@ import java.util.List;
 @RestController
 public class ShoppingCartsController {
 
+    private final ShoppingCartsCommoditiesMapper cartsCommoditiesMapper;
+
+    private final ShoppingCartsMapper cartMapper;
+
     @Autowired
-    private ShoppingCartsCommoditiesMapper cartsCommoditiesMapper;
+    public ShoppingCartsController(ShoppingCartsCommoditiesMapper cartsCommoditiesMapper, ShoppingCartsMapper cartMapper) {
+        this.cartsCommoditiesMapper = cartsCommoditiesMapper;
+        this.cartMapper = cartMapper;
+    }
 
-    private ShoppingCartsMapper cartMapper;
-
-    @GetMapping("shoppingCarts")
-    public ShoppingCarts getCartByMemberId(int memberId){
+    @GetMapping("shoppingCart/{memberId}")
+    public ShoppingCarts getCartByMemberId(@PathVariable int memberId){
         return cartMapper.getShoppingCarts(memberId);
+    }
+
+    @GetMapping("shoppingCart/commoditiesList/{cartId}")
+    public List<ShoppingCartsCommodities> getCommoditiesListInCart(@PathVariable int cartId){
+        return cartsCommoditiesMapper.getShoppingCartsCommodities(cartId);
     }
 
     @PostMapping("cart/commodities")
@@ -39,6 +46,17 @@ public class ShoppingCartsController {
         return cartsCommoditiesMapper.addCommodityToShoppingCartsById(cartsCommodities);
     }
 
-    
+    @PutMapping("cart/commodity/buyNumber")
+    public int updateBuyNumber(@RequestBody ShoppingCartsCommodities cartsCommodities){
+        return cartsCommoditiesMapper.updateBuyNumber(cartsCommodities);
+    }
+
+    @DeleteMapping("cart/commodity")
+    public int deleteCommodity(@RequestBody ShoppingCartsCommodities cartsCommodity){
+        return cartsCommoditiesMapper.deleteCommodityFromCarts(cartsCommodity);
+    }
+
+
+        
 
 }
