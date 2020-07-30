@@ -15,7 +15,7 @@ public class Members implements Serializable {
 
     private String nickname;
 
-    private Integer rank;
+    private Integer rankInfo;
 
     private Integer phone;
 
