@@ -1,5 +1,7 @@
 package com.nyaxs.nyastore.controller;
 
+import com.nyaxs.nyastore.entity.exception.ExceptionResult;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -13,6 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ExceptionController {
 
+}
+
+    @RequestMapping("/exception")
+
+    public String exception(String name, String pwd) throws Exception {
+    
+    }
 
 
 }
