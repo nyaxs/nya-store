@@ -15,12 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ExceptionController {
 
-}
 
     @RequestMapping("/exception")
 
     public String exception(String name, String pwd) throws Exception {
-    
+        return "exceptionTest";
     }
 
 
