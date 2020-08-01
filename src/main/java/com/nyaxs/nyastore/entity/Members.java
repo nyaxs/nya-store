@@ -1,7 +1,9 @@
 package com.nyaxs.nyastore.entity;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -9,10 +11,13 @@ import java.time.LocalDate;
 public class Members implements Serializable {
     private Integer id;
 
-    
+    @NotBlank
+    @Size(max = 12,min = 1)
     private String name;
 
+    @NotBlank
     private String password;
+
 
     private String nickname;
 
