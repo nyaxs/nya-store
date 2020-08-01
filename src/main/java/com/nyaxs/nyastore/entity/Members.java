@@ -9,6 +9,7 @@ import java.time.LocalDate;
 public class Members implements Serializable {
     private Integer id;
 
+    
     private String name;
 
     private String password;

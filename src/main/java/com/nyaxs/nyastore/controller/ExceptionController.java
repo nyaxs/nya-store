@@ -16,11 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExceptionController {
 
 
-    @RequestMapping("/exception")
+    @RequestMapping("exception")
 
     public String exception(String name, String pwd) throws Exception {
         return "exceptionTest";
     }
 
+    @RequestMapping("unlogin")
+    public void unloginException(){
+
+    }
 
 }
