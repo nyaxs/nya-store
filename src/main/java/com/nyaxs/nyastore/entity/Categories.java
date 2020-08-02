@@ -1,51 +1,25 @@
 package com.nyaxs.nyastore.entity;
 
+import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+/**
+ * @author nyaxs
+ */
+@Data
 public class Categories implements Serializable {
     private Integer id;
 
+    @NotBlank
     private String category;
 
+    @NotBlank
+    @NotNull
     private Integer commodityId;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category == null ? null : category.trim();
-    }
-
-    public Integer getCommodityId() {
-        return commodityId;
-    }
-
-    public void setCommodityId(Integer commodityId) {
-        this.commodityId = commodityId;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", category=").append(category);
-        sb.append(", commodityId=").append(commodityId);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }
