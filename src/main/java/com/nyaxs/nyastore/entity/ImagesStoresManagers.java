@@ -13,6 +13,4 @@ public class ImagesStoresManagers implements Serializable {
     private String imgAddress;
 
     private static final long serialVersionUID = 1L;
-
-
 }

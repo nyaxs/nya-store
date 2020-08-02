@@ -2,6 +2,7 @@ package com.nyaxs.nyastore.entity;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -19,11 +20,12 @@ public class Commodities implements Serializable {
 
     private String description;
 
-    @NotBlank
+    @NotEmpty
     private Integer storeId;
 
     private Integer buyNumber;
 
+    @NotEmpty
     private Double price;
 
     private LocalDate createTime;
