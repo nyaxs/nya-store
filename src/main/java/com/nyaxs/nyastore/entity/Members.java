@@ -10,6 +10,9 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+/**
+ * @author nyaxs
+ */
 @Data
 public class Members implements Serializable {
     private Integer id;
@@ -18,8 +21,8 @@ public class Members implements Serializable {
     @Length(min = 1, max = 12, message = "用户名长度长度在1-12之间")
     private String name;
 
-    @NotBlank
-    @Size(min = 6, max = 16)
+    @NotBlank(message = "密码不能为空")
+    @Size(min = 6, max = 16, message = "密码长度长度在6-16之间")
     private String password;
 
     private String nickname;
