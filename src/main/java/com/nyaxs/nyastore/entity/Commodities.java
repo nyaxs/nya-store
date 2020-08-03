@@ -15,17 +15,17 @@ public class Commodities implements Serializable {
     private Integer id;
 
     @NotBlank
-    @Size(max = 18,min = 1)
+    @Size(max = 18,min = 1, message = "商品名长度1-18")
     private String name;
 
     private String description;
 
-    @NotEmpty
+    @NotEmpty(message = "storeId不为空")
     private Integer storeId;
 
     private Integer buyNumber;
 
-    @NotEmpty
+    @NotEmpty(message = "price不为空")
     private Double price;
 
     private LocalDate createTime;

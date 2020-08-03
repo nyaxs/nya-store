@@ -37,7 +37,7 @@ public class AuthenticationController {
 
 
     @PostMapping("register")
-    public int register(@RequestBody Members member) {
+    public int register(@RequestBody @Validated Members member) {
         log.info("进入注册方法，提交的member数据为：" + member.toString());
         log.info("注册时仅 name 和 password 为必须，其余可为 null 或者默认指定");
         member.setCreateTime(LocalDate.now());
