@@ -12,11 +12,11 @@ import java.io.Serializable;
 public class CommoditiesListOrders implements Serializable {
     private Integer id;
 
-    @NotEmpty
+    @NotEmpty(message = "commodityId不为空")
     private Integer commodityId;
-    @NotEmpty
+    @NotEmpty(message = "ordersId 不为空")
     private Integer ordersId;
-    @NotEmpty
+    @NotEmpty(message = "size不为空")
     private Integer size;
 
     private static final long serialVersionUID = 1L;
