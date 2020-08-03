@@ -4,6 +4,7 @@ import com.nyaxs.nyastore.entity.Members;
 import com.nyaxs.nyastore.mapper.MembersMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -26,14 +27,11 @@ public class AuthenticationController {
     }
 
     @GetMapping("login")
-    public Members login(@RequestBody Members member) {
+    public Members login(@RequestBody @Validated Members member) {
         log.info("进入登录方法，传入的member name和password为：" + member.getName() + member.getPassword());
         Members memberRead = new Members();
 
         memberRead = memberMapper.getMemberByNameAndPassword(member.getName(), member.getPassword());
-        if (memberRead == null || memberRead.equals("")) {
-            return null;
-        }
         return memberRead;
     }
 

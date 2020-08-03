@@ -1,6 +1,7 @@
 package com.nyaxs.nyastore.entity;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Email;
@@ -13,8 +14,8 @@ import java.time.LocalDate;
 public class Members implements Serializable {
     private Integer id;
 
-    @NotBlank
-    @Size(min = 1, max = 12)
+    @NotBlank(message = "用户名不能为空")
+    @Length(min = 1, max = 12, message = "用户名长度长度在1-12之间")
     private String name;
 
     @NotBlank
