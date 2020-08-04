@@ -1,6 +1,7 @@
 package com.nyaxs.nyastore.mapper;
 
 import com.nyaxs.nyastore.entity.Stores;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -36,5 +37,9 @@ public interface StoresMapper {
     @Insert("insert into stores(name,manager_id,description,create_time,address,email)" +
             "values(#{name},#{managerId},#{description},#{createTime},#{address},#{email})")
     int insertStore(Stores store);
+
+
+    @Delete("delete from stores where id = #{id}")
+    int deleteStoreById(int id);
 
 }

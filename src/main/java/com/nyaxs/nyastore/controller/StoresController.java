@@ -2,10 +2,12 @@ package com.nyaxs.nyastore.controller;
 
 import com.nyaxs.nyastore.entity.Stores;
 import com.nyaxs.nyastore.mapper.StoresMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -15,6 +17,7 @@ import java.util.List;
  * @Date 2020-07-25 20:56
  * @Version 1.0
  **/
+@Slf4j
 @RestController
 public class StoresController {
 
@@ -43,7 +46,17 @@ public class StoresController {
 
     @PostMapping("store")
     public int insertStore(@RequestBody @Validated Stores store){
+        store.setCreateTime(LocalDate.now());
         return storesMapper.insertStore(store);
+    }
+
+    @DeleteMapping("store")
+    public int deleteStore(int id,String code){
+        log.info("验证权限code: " + code);
+        if (!code.equals("qwq")){
+            return -1;
+        }
+        return storesMapper.deleteStoreById(id);
     }
 
 }
