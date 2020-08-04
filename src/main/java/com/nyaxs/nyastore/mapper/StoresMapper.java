@@ -1,10 +1,7 @@
 package com.nyaxs.nyastore.mapper;
 
 import com.nyaxs.nyastore.entity.Stores;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -55,6 +52,14 @@ public interface StoresMapper {
             "values(#{name},#{managerId},#{description},#{createTime},#{address},#{email})")
     int insertStore(Stores store);
 
+    /**
+     * todo: 更新商店名称
+     * @param name 商店名称参数
+     * @param id 商店 id 参数
+     * @return int 返回影响行数
+     */
+    @Update("update stores set name = #{name} where id = #{id}")
+    int updateStoreName(String name, int id);
 
     /**
      * todo: 根据 id 删除 stores 表中一条记录

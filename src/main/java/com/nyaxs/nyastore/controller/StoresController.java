@@ -52,6 +52,7 @@ public class StoresController {
 
     @DeleteMapping("store")
     public int deleteStore(int id,String code){
+        // 这里应该在登录后，生成一个权限认证码放在session中，涉及到敏感操作时应当验证权限
         log.info("验证权限code: " + code);
         if (!code.equals("qwq")){
             return -1;
@@ -59,4 +60,9 @@ public class StoresController {
         return storesMapper.deleteStoreById(id);
     }
 
+
+    @PutMapping("store/{name}/{id}")
+    public int updateName(@PathVariable String name ,@PathVariable int id){
+        return storesMapper.updateStoreName(name,id);
+    }
 }
