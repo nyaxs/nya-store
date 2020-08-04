@@ -31,7 +31,7 @@ public interface ManagersMapper {
 
     @Update("update managers set name = #{name}, password = #{password}, " +
             "email = #{email}")
-    int updateMember(Managers managers);
+    int updateManager(Managers managers);
 
     @Delete("delete from managers where id = #{id}")
     int deleteManagersById(int id);
