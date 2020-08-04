@@ -3,9 +3,8 @@ package com.nyaxs.nyastore.controller;
 import com.nyaxs.nyastore.entity.Stores;
 import com.nyaxs.nyastore.mapper.StoresMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,6 +39,11 @@ public class StoresController {
     @GetMapping("storesList/name/{name}")
     public List<Stores> getStoresListByName(@PathVariable String name) {
         return storesMapper.getStoresByName(name);
+    }
+
+    @PostMapping("store")
+    public int insertStore(@RequestBody @Validated Stores store){
+        return storesMapper.insertStore(store);
     }
 
 }
