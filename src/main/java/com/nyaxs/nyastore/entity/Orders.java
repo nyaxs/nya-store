@@ -1,6 +1,8 @@
 package com.nyaxs.nyastore.entity;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -10,7 +12,9 @@ import java.util.Date;
 public class Orders implements Serializable {
 
 
+    @NotEmpty(message = "orders id不为空")
     private Integer id;
+
 
     private LocalDate createTime;
 
@@ -19,6 +23,7 @@ public class Orders implements Serializable {
      */
     private Integer status;
 
+    @NotBlank(message = "orders 地址不为空")
     private String address;
 
     private static final long serialVersionUID = 1L;

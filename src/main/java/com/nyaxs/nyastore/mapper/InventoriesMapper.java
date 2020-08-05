@@ -21,6 +21,12 @@ import java.util.List;
 @Mapper
 public interface InventoriesMapper {
 
+    /**
+     * todo: 获取指定上商店的指定商品的库存
+     * @param storeId 商店id
+     * @param commodityId 商品id
+     * @return 库存对象
+     */
     @Select("select * from inventories where store_id = #{storeId} and commodity_id =  #{commodityId}")
     Inventories getOneInventories(int storeId, int commodityId);
 
