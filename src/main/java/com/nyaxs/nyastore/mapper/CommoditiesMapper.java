@@ -20,8 +20,14 @@ import java.util.List;
 @Mapper
 public interface CommoditiesMapper {
 
+    /**
+     * todo：根据名字精确搜索商品
+     * @param name 商品名
+     * @return Commodities 对象，商品的实体类
+     */
     @Select("select * from commodities where name = #{name} ")
     Commodities getCommodityByName(String name);
+
 
     @Select("select * from commodities where id = #{id}")
     Commodities getCommodityById(int id);
