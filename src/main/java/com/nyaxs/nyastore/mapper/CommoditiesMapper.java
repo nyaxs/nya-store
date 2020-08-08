@@ -48,11 +48,22 @@ public interface CommoditiesMapper {
             " values(#{name},#{description},#{store_id},#{price},#{createTime})")
     int insertCommodity(Commodities commodity);
 
+    /**
+     * todo: 根据指定的列名和值查询数据
+     * @param key 表的字段名
+     * @param value 条件值
+     * @return Commodities 对象，商品的实体类
+     */
     @Select("select * from commodities where ${key} = #{value}")
     Commodities getCommodityByColumn(String key, String value);
 
+    /**
+     * todo: 更新一条商品记录的 name 名字 字段
+     * @param commodity Commodities 对象，商品的实体类
+     * @return int 影响行数
+     */
     @Update("update commodities set name = #{name}")
-    int updateMember(Commodities commodity);
+    int updateCommodityName(Commodities commodity);
 
     @Delete("delete from commodities where id = #{id}")
     int deleteCommodityById(int id);
