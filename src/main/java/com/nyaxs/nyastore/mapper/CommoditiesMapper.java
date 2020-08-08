@@ -65,6 +65,11 @@ public interface CommoditiesMapper {
     @Update("update commodities set name = #{name}")
     int updateCommodityName(Commodities commodity);
 
+    /**
+     * todo: 根据指定的商品 id 删除商品
+     * @param id 商品 id
+     * @return int 影响行数
+     */
     @Delete("delete from commodities where id = #{id}")
     int deleteCommodityById(int id);
 
