@@ -28,7 +28,11 @@ public interface CommoditiesMapper {
     @Select("select * from commodities where name = #{name} ")
     Commodities getCommodityByName(String name);
 
-
+    /**
+     * todo: 根据 id 精确搜索商品
+     * @param id 商品 id
+     * @return Commodities 对象，商品的实体类
+     */
     @Select("select * from commodities where id = #{id}")
     Commodities getCommodityById(int id);
 
