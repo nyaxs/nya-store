@@ -39,6 +39,11 @@ public interface CommoditiesMapper {
     @Select("select * from commodities where name like concat('%',#{name},'%')")
     List<Commodities> getCommoditiesListByName(String name);
 
+    /**
+     * todo: 添加一项 commodities 商品 记录
+     * @param commodity Commodities 对象，商品的实体类
+     * @return int 影响行数
+     */
     @Insert("insert into commodities(name,description,store_id,price,create_time,)" +
             " values(#{name},#{description},#{store_id},#{price},#{createTime})")
     int insertCommodity(Commodities commodity);
