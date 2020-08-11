@@ -4,6 +4,7 @@ import com.nyaxs.nyastore.entity.Members;
 import com.nyaxs.nyastore.mapper.MembersMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,17 +22,20 @@ public class AuthenticationController {
 
     private final MembersMapper memberMapper;
 
+    private final StringRedisTemplate stringRedisTemplate;
+
     @Autowired
-    public AuthenticationController(MembersMapper memberMapper) {
+    public AuthenticationController(MembersMapper memberMapper, StringRedisTemplate stringRedisTemplate) {
         this.memberMapper = memberMapper;
+        this.stringRedisTemplate = stringRedisTemplate;
     }
 
     @GetMapping("login")
     public Members login(@RequestBody @Validated Members member) {
         log.info("进入登录方法，传入的member name和password为：" + member.getName() + member.getPassword());
         Members memberRead = new Members();
-
         memberRead = memberMapper.getMemberByNameAndPassword(member.getName(), member.getPassword());
+        stringRedisTemplate.opsForValue().set("member",memberRead.toString());
         return memberRead;
     }
 
