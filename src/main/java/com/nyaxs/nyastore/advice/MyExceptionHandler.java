@@ -1,11 +1,11 @@
 package com.nyaxs.nyastore.advice;
 
+import com.nyaxs.nyastore.entity.ResultBean;
 import com.nyaxs.nyastore.entity.exception.ExceptionEnum;
 import com.nyaxs.nyastore.entity.exception.ExceptionResult;
 import com.nyaxs.nyastore.entity.exception.MyException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,32 +17,20 @@ import javax.servlet.http.HttpServletRequest;
  * @Version 1.0
  **/
 
-@ControllerAdvice
-public class MyExceptionAdvice {
-    @ExceptionHandler(value = Exception.class)
+@RestControllerAdvice
+@Slf4j
+public class MyExceptionHandler {
 
-    @ResponseBody
-
-    public ExceptionResult defaultException(HttpServletRequest request, Exception e){
-
-        e.printStackTrace();
-
-        return ExceptionResult.builder()
-
-                .code(ExceptionEnum.EXCEPTION.getCode())
-
-                .message(ExceptionEnum.EXCEPTION.getMsg())
-
-                .build();
-
+    @ExceptionHandler(Exception.class)
+    public ResultBean unknownException(Exception e){
+        log.error("发生了未知异常", e);
+        // 邮件通知技术人员
+        return ResultBean.error(-999,"系统出现异常，请联系客服或管理员");
     }
 
 
 
     @ExceptionHandler(value = MyException.class)
-
-    @ResponseBody
-
     public ExceptionResult myException(HttpServletRequest request,MyException e){
 
         e.printStackTrace();

@@ -8,7 +8,7 @@ import java.util.Collection;
 
 /**
  * @ClassName ResultBean
- * @Description TODO:
+ * @Description TODO:规范返回结果集
  * @Author nyaxs
  * @Date 2020-08-17 13:30
  * @Version 1.0
