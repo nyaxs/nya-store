@@ -37,6 +37,7 @@ public class AuthenticationController {
         memberRead = memberMapper.getMemberByNameAndPassword(member.getName(), member.getPassword());
         stringRedisTemplate.opsForValue().set("member",memberRead.toString());
         return memberRead;
+
     }
 
 
