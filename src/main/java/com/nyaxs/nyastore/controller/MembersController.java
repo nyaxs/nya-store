@@ -1,10 +1,13 @@
 package com.nyaxs.nyastore.controller;
 
 import com.nyaxs.nyastore.entity.Members;
+import com.nyaxs.nyastore.entity.ResultBean;
 import com.nyaxs.nyastore.mapper.MembersMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Slf4j
 @RestController
@@ -31,9 +34,9 @@ public class MembersController {
     }
 
     @PostMapping("member")
-    public int updateMember(@RequestBody Members member) {
-        return memberMapper.updateMember(member);
-
+    public ResultBean<Object> updateMember(@Valid @RequestBody Members member) {
+        //return memberMapper.updateMember(member);
+        return ResultBean.success();
     }
 
     @GetMapping("member/{key}/{value}")

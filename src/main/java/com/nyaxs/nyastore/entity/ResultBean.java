@@ -32,6 +32,8 @@ public class ResultBean<T> {
     }
 
     public ResultBean(T data){
+        this.code = 0;
+        this.message = "success";
         this.data = data;
     }
 
