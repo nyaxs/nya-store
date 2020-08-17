@@ -14,34 +14,37 @@ import java.util.Collection;
  * @Version 1.0
  **/
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Data
 public class ResultBean<T> {
     private int code;
     private String message;
-    private Collection<T> data;
+    private T data;
 
-    public static ResultBean error(int code, String message){
-        ResultBean resultBean = new ResultBean();
-        resultBean.setCode(code);
-        resultBean.setMessage(message);
-        return resultBean;
+    public ResultBean(){
+        this.code = 0;
+        this.message = "success";
     }
 
-    public static ResultBean success(){
-        ResultBean resultBean = new ResultBean();
-        resultBean.setCode(0);
-        resultBean.setMessage("success");
-        return resultBean;
+    public ResultBean(int code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
-    public static <V> ResultBean<V> success(Collection<V> data){
-        ResultBean resultBean = new ResultBean();
-        resultBean.setCode(0);
-        resultBean.setMessage("success");
-        resultBean.setData(data);
-        return resultBean;
+    public ResultBean(T data){
+        this.data = data;
+    }
+
+    public static <T> ResultBean<T> fail(int code, String message){
+        return new ResultBean(code,message);
+    }
+
+    public static <T> ResultBean<T> success(){
+        return new ResultBean();
+    }
+
+    public static <T> ResultBean<T> success(T data){
+        return new ResultBean(data);
     }
 
 }
