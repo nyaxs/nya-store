@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -28,7 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-//    @ExceptionHandler(Exception.class)
+    //    @ExceptionHandler(Exception.class)
 //    public ResultBean unknownException(Exception e){
 //        log.error("发生了未知异常", e);
 //        // 邮件通知技术人员
@@ -36,16 +37,25 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 //    }
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(
-            Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request){
-        if (HttpStatus.INTERNAL_SERVER_ERROR.equals(status)){
-            request.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE,ex,WebRequest.SCOPE_REQUEST);
+            Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        if (HttpStatus.INTERNAL_SERVER_ERROR.equals(status)) {
+            request.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ex, WebRequest.SCOPE_REQUEST);
         }
-        logger.error(ex.getMessage(),ex);
-        ResultBean resultBean = ResultBean.fail(status.value(),ex.getMessage());
-        return new ResponseEntity<>(resultBean,headers,status);
-
+        logger.error(ex.getMessage(), ex);
+        ResultBean resultBean = ResultBean.fail(status.value(), ex.getMessage());
+        return new ResponseEntity<>(resultBean, headers, status);
     }
 
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(
+            MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        StringBuffer sb = new StringBuffer();
+        ex.getBindingResult().getAllErrors().forEach(error -> {
+            sb.append(error.getDefaultMessage()).append(";");
+        });
+        ResultBean resultBean = ResultBean.fail(status.value(),sb.toString());
+        return new ResponseEntity<>(resultBean,headers,HttpStatus.OK);
+    }
 
 
 }

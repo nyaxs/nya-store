@@ -1,6 +1,12 @@
 package com.nyaxs.nyastore.controller;
 
+import com.nyaxs.nyastore.entity.Members;
+import com.nyaxs.nyastore.entity.ResultBean;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.validation.Valid;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +20,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class MembersControllerTest {
 
     @Test
-    void updateMember() {
+    @GetMapping("member")
+    ResultBean updateMember(@Valid @RequestBody Members member) {
+        return ResultBean.success();
     }
 }
