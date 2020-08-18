@@ -37,7 +37,6 @@ public class Members implements Serializable {
 
     private Integer status;
 
-    @Past
     private LocalDate birthday;
 
     private String personalizedSignature;

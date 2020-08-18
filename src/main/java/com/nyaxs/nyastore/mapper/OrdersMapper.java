@@ -19,9 +19,6 @@ import java.util.List;
 public interface OrdersMapper {
 
 
-    @Insert("insert into orders (create_time, address) values (#{createTime},#{address})")
-    int insertOrders(LocalDate createTime, String address);
-
     @Select("select * from orders where id = #{id}")
     Orders getOrderById(int id);
 
