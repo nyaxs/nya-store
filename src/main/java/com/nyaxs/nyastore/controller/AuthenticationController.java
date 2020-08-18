@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 
 /**
@@ -31,13 +32,13 @@ public class AuthenticationController {
     }
 
     @GetMapping("login")
-    public Members login(@RequestBody @Validated Members member) {
+    public Members login( @Valid @RequestBody Members member) {
         log.info("进入登录方法，传入的member name和password为：" + member.getName() + member.getPassword());
         Members memberRead = new Members();
         memberRead = memberMapper.getMemberByNameAndPassword(member.getName(), member.getPassword());
         stringRedisTemplate.opsForValue().set("member",memberRead.toString());
+        log.info(stringRedisTemplate.opsForValue().get("member"));
         return memberRead;
-
     }
 
 

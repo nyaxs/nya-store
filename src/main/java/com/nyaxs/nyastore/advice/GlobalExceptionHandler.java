@@ -1,9 +1,6 @@
 package com.nyaxs.nyastore.advice;
 
 import com.nyaxs.nyastore.entity.ResultBean;
-import com.nyaxs.nyastore.entity.exception.ExceptionEnum;
-import com.nyaxs.nyastore.entity.exception.ExceptionResult;
-import com.nyaxs.nyastore.entity.exception.MyException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -41,7 +38,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         if (HttpStatus.INTERNAL_SERVER_ERROR.equals(status)) {
             request.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ex, WebRequest.SCOPE_REQUEST);
         }
-        logger.error(ex.getMessage(), ex);
+        log.error(ex.getMessage(), ex);
         ResultBean resultBean = ResultBean.fail(status.value(), ex.getMessage());
         return new ResponseEntity<>(resultBean, headers, status);
     }
