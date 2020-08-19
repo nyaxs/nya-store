@@ -24,6 +24,12 @@ public class CommoditiesController {
         this.commoditiesMapper = commoditiesMapper;
     }
 
+    @GetMapping("commoditiesList/random")
+    public List<Commodities> getRandomCommoditiesForIndex(){
+        return null;
+    }
+
+
     @GetMapping("commoditiesList/{name}")
     public List<Commodities> getCommoditiesListByName(@PathVariable String name) {
         return commoditiesMapper.getCommoditiesListByName(name);
