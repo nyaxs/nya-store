@@ -37,7 +37,7 @@ public class AuthenticationController {
         Members memberRead = new Members();
         memberRead = memberMapper.getMemberByNameAndPassword(member.getName(), member.getPassword());
         stringRedisTemplate.opsForValue().set("member",memberRead.toString());
-        log.info(stringRedisTemplate.opsForValue().get("member"));
+        log.info("从redis中取出member的值：" + stringRedisTemplate.opsForValue().get("member"));
         return memberRead;
     }
 
