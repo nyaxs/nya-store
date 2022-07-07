@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>5.0.1.Final</version><!-- tomcat7不支持6.0以上,el包冲突，引入el也无法解析 -->
+            <version>6.0.23.Final</version><!-- tomcat7不支持6.0以上,el包冲突，引入el也无法解析 -->
         </dependency>
 
         <!--MyBatis 依赖-->
